@@ -1,0 +1,17 @@
+@startuml open_deposit
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+top to bottom direction
+
+Person_Ext(bankClient, "Клиент банка", "")
+
+System(bank, "Банк ''Открытие''", "")
+System_Ext(telecomOperator, "Телеком-оператор")
+
+Rel(bank, bankClient, "Получение списка доступных депозитов с актуальными и персонализированными ставками", "TLS 1.3")
+Rel(bankClient, bank, "Подача заявки на открытие депозита", "TLS 1.3")
+Rel(bank, telecomOperator, "СМС-оповещение с кодом подтверждения")
+Rel(telecomOperator, bankClient, "СМС-оповещение с кодом подтверждения")
+
+@enduml
