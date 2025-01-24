@@ -1,0 +1,28 @@
+@startuml open_deposit
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+top to bottom direction
+
+System_Ext(externalCallCenter, "Система партнёрского кол-центра")
+System_Ext(s3Storage, "S3-хранилище")
+Person(call_employee, "Сотрудник колл-центра", "")
+
+System_Boundary(bank, "Банк ''Открытие''") {
+    SystemQueue(q_all_deposits, "Очередь сообщений для доступных депозитов", "Apache Kafka")
+    Container(call_center, "Колл-центр", "React.js, Java Spring Boot")
+    SystemDb(call_center_db, "БД Колл-центра", "PostgreSQL")
+    Container(svc_deposits_to_s3, "Микросервис передачи данных о депозитах в S3-хранилище", "Java Spring Boot")
+}
+
+' Передача данных о доступных депозитах в колл-центр
+Rel(q_all_deposits, call_center_db, "Доступные депозиты")
+Rel(call_center, call_center_db, "Информация о депозитах")
+Rel(call_employee, call_center, "Получение информации о депозитах")
+
+' Передача информации о депозитах в партнерский колл-центр
+Rel(q_all_deposits, svc_deposits_to_s3, "Доступные депозиты")
+Rel(svc_deposits_to_s3, s3Storage, "Передача информации о депозитах")
+Rel(externalCallCenter, s3Storage, "Получение файлов с информацией о депозитах")
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml open_deposit
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+top to bottom direction
+
+Person(call_employee, "Сотрудник колл-центра", "")
+
+System(bank, "Банк ''Открытие''", "")
+
+System_Ext(externalCallCenter, "Система партнёрского кол-центра")
+System_Ext(s3Storage, "S3-хранилище")
+
+Rel(call_employee, bank, "Получение данных о доступных депозитах", "TLS 1.3")
+Rel(bank, s3Storage, "Передача информации о депозитах")
+Rel(externalCallCenter, s3Storage, "Получение информации о депозитах")
+
+
+@enduml
