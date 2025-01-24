@@ -71,10 +71,10 @@
           <mxGeometry x="-840" y="-534" width="1610" height="180" as="geometry" />
         </mxCell>
         <mxCell id="XOp6uAMbNlj9Rv-cDMVE-25" value="T6 - Доработка получения информации о депозитах" style="shape=rect;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=18;html=1;whiteSpace=wrap;align=center;verticalAlign=top;spacing=5;rounded=0;" vertex="1" parent="3D7FDG2aXA9G618_Kong-1">
-          <mxGeometry x="-790" y="-500" width="760" height="60" as="geometry" />
+          <mxGeometry x="-790" y="-500" width="980" height="60" as="geometry" />
         </mxCell>
         <mxCell id="XOp6uAMbNlj9Rv-cDMVE-26" value="T7 - Разработка микросервиса передачи данных о депозитах в S3-хранилище" style="shape=rect;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=18;html=1;whiteSpace=wrap;align=center;verticalAlign=top;spacing=5;rounded=0;" vertex="1" parent="3D7FDG2aXA9G618_Kong-1">
-          <mxGeometry y="-290" width="750" height="60" as="geometry" />
+          <mxGeometry x="-280" y="-290" width="1030" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
