@@ -11,7 +11,6 @@ Person(back_employee, "Сотрудник бэк-офиса", "")
 System_Boundary(bank, "Банк ''Открытие''") {
     Container(internet_bank, "Интернет-банк", "ASP.NET MVC 4.5 на основе .NET Framework 4.5")
     SystemDb(internet_bank_db, "БД интернет-банка", "MS SQL")
-    SystemQueue(q_new_deposits, "Очередь новых заявок на депозиты", "Apache Kafka")
     SystemQueue(q_approved_new_deposits, "Очередь сообщений для подтвержденных клиентом заявок на создание депозита", "Apache Kafka")
     SystemQueue(q_all_deposits, "Очередь сообщений для доступных депозитов", "Apache Kafka")
     Container(srv_new_deposits, "Микросервис новых заявок на открытие депозитов", "Java Spring Boot")
@@ -27,8 +26,7 @@ Rel(q_all_deposits, internet_bank_db, "Обновление информации
 
 ' Клиент создает заявку на открытие депозита
 Rel(client, internet_bank, "Подача заявки на открытие депозита")
-Rel(internet_bank, q_new_deposits, "Заявка на открытие депозита")
-Rel(q_new_deposits, srv_new_deposits, "Заявки на открытие депозитов")
+Rel(internet_bank, srv_new_deposits, "Заявка на открытие депозита", "HTTPS/REST API")
 Rel(srv_new_deposits, telecomOperator, "Отправка одноразового СМС-кода с подтверждением создания заявки")\
 
 ' Клиент подтвердил заявку на открытие депозита
