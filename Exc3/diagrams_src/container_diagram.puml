@@ -27,7 +27,7 @@ Rel(q_all_deposits, internet_bank_db, "Обновление информации
 ' Клиент создает заявку на открытие депозита
 Rel(client, internet_bank, "Подача заявки на открытие депозита")
 Rel(internet_bank, srv_new_deposits, "Заявка на открытие депозита", "HTTPS/REST API")
-Rel(srv_new_deposits, telecomOperator, "Отправка одноразового СМС-кода с подтверждением создания заявки")\
+Rel(srv_new_deposits, telecomOperator, "Отправка одноразового СМС-кода с подтверждением создания заявки")
 
 ' Клиент подтвердил заявку на открытие депозита
 Rel(srv_new_deposits, q_approved_new_deposits, "Подтвержденные заявки на создание депозитов")
